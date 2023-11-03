@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Power managment{% endblock %}
+
+{% block content %}
+<h1>power managment</h1>
+{% if message %}
+    <div class="message">
+        {{ message }}
+    </div>
+{% endif %}
+
+<div class="power-management">
+    <form method="post" action="#">
+        <input type="submit" value="Shutdown" name="Shutdown"/>
+        <input type="submit" value="Restart" name="Restart" />
+        <input type="submit" value="Sleep" name="Sleep" />
+    </form>
+</div>
+{% endblock %}

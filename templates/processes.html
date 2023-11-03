@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Samba Server Running Processes{% endblock %}
+
+{% block content %}
+    <h1>Samba Server Running Processes</h1>
+    <ul id="process-list">
+        {% for process in processes %}
+            <li>
+                {{ process.name }} (PID: {{ process.pid }})
+                <form action="{{ url_for('terminate_process', pid=process.pid) }}" method="post" class="terminate-form">
+                    <button type="submit" class="terminate-button">Terminate</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Minecraft Server Dashboard{% endblock %}
+
+{% block content %}
+    <h1>Minecraft Server Status: {{ server_status }}</h1>
+    
+    <!-- Display the tunnel URL if available -->
+    {% if tunnel_url %}
+        <p>Tunnel URL: {{ tunnel_url }}</p>
+    {% endif %}
+    
+    <form method="post" action="/start" class="terminate-form">
+        <input type="submit" value="Start Server" class="terminate-button">
+    </form>
+
+    <form method="post" action="/stop" class="terminate-form">
+        <input type="submit" value="Stop Server" class="terminate-button">
+    </form>
+
+    <h2>Console</h2>
+    <div id="console" class="console-container">
+        <pre>
+            {% for line in console_output %}
+            {{ line }}
+            {% endfor %}
+        </pre>
+    </div>
+
+    <h2>Send Command</h2>
+    <form method="post" action="/minecraft-console" class="console-container">
+        <input type="text" name="command" id="command-input" placeholder="Enter a command">
+        <input type="submit" value="Send" id="execute-button">
+    </form>
+
+    <script>
+        function refreshConsole() {
+            fetch('/console-output')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('console').innerHTML = '<pre>' + data + '</pre>';
+                    setTimeout(refreshConsole, 1000); // Refresh every 1 second
+                });
+        }
+    
+        refreshConsole();
+    </script>
+    
+{% endblock %}

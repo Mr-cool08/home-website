@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+<meta http-equiv="refresh" content="60">
+{% block title %}Website Status Log{% endblock %}
+
+{% block content %}
+    <h1>Website Status Log</h1>
+    <ul>
+        {% for entry in status_log %}
+            {% if "UP" in entry %}
+                <li class="log-entry" style="color: green;">{{ entry }}</li>
+            {% elif "DOWN" in entry %}
+                <li class="log-entry" style="color: red;">{{ entry }}</li>
+            {% else %}
+                <li class="log-entry">{{ entry }}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}System Dashboard{% endblock %}
+
+{% block content %}
+    <h1>System Usage</h1>
+    <ul>
+        <li>CPU Usage: <span id="cpu_percent">{{ cpu_percent }}</span>%</li>
+        <li>RAM Usage: <span id="ram_percent">{{ ram_percent }}</span>%</li>
+        <li>HDD Usage: <span id="hdd_percent">{{ hdd_percent }}</span>%</li>
+    </ul>
+
+    <!-- Add Chart.js graph here -->
+    <canvas id="usageChart" width="400" height="200"></canvas>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // JavaScript code for Chart.js graph
+        var ctx = document.getElementById('usageChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['CPU', 'RAM', 'HDD'],
+                datasets: [{
+                    label: 'Usage (%)',
+                    data: [{{ cpu_percent }}, {{ ram_percent }}, {{ hdd_percent }}],
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
+            }
+        });
+
+        // Function to update data
+        function updateData() {
+            // Fetch new data from your Flask backend (you'll need to create a route for this)
+            fetch('/get_usage_data')
+                .then(response => response.json())
+                .then(data => {
+                    // Update the data in the HTML
+                    document.getElementById('cpu_percent').textContent = data.cpu_percent;
+                    document.getElementById('ram_percent').textContent = data.ram_percent;
+                    document.getElementById('hdd_percent').textContent = data.hdd_percent;
+
+                    // Update the chart data
+                    myChart.data.datasets[0].data = [data.cpu_percent, data.ram_percent, data.hdd_percent];
+                    myChart.update();
+                });
+        }
+
+        // Update data every 5 seconds (adjust the interval as needed)
+        setInterval(updateData, 1000);
+        
+        // Initial data update
+        updateData();
+    </script>
+{% endblock %}

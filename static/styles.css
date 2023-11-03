@@ -1,0 +1,181 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f3f3f3;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  background-color: #0073aa;
+  color: #ffffff;
+  padding: 10px;
+  margin: 0;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-top: 20px;
+}
+
+ul {
+  
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  border-radius: 5px;
+  padding: 10px;
+  margin: 5px 0;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+pre {
+  white-space: pre-wrap;
+  background-color: #ffffff;
+  padding: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+.terminate-form {
+  display: inline-block;
+  float: right; /* Move the form to the right */
+  margin-right: 10px; /* Add some spacing */
+}
+
+.terminate-button {
+  background-color: #ff6347;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px; /* Add rounded corners */
+}
+/* ... (existing styles) ... */
+
+nav {
+  background-color: #0073aa;
+  padding: 10px 0;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+nav ul li:last-child {
+  margin-right: 0;
+}
+
+nav a {
+  color: #000000;
+  text-decoration: none;
+  font-weight: bold;
+}
+/* Add these CSS rules to your existing stylesheet */
+
+/* Style for the logo */
+nav .logo {
+  padding-left: 10px;
+  float: left; /* Float the logo to the left */
+  margin-right: 20px; /* Adjust the margin as needed */
+}
+
+nav .logo img {
+  width: 50px; /* Set the desired width for your logo */
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* ... (existing styles) ... */
+
+
+
+
+/* ... (existing styles) ... */
+
+.content {
+  max-width: 800px; /* Set a maximum width for the content area */
+  margin: 0 auto; /* Center-align the content horizontally */
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+/* ... (existing styles) ... */
+
+
+/* ... (existing styles) ... */
+
+.console-container {
+  margin-top: 20px;
+}
+
+#command-input {
+  width: 70%;
+  padding: 5px;
+}
+
+#execute-button {
+  padding: 5px 10px;
+  background-color: #0073aa;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+#output-area {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  white-space: pre-wrap;
+}
+
+/* ... (existing styles) ... */
+/* Add these CSS rules to your existing stylesheet */
+.power-management {
+  text-align: center;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border: none;
+}
+
+.power-management form {
+  margin-top: 10px;
+}
+
+.power-management input[type="submit"] {
+  background-color: #0073aa;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.power-management input[type="submit"]:hover {
+  background-color: #005684;
+}
+
+/* Adjust these styles as needed to match your design preferences */
+/* Add these CSS rules to your existing stylesheet */
+.message {
+  background-color: #c22519; /* Green background color */
+  color: #fff; /* White text color */
+  padding: 10px; /* Add some padding around the message */
+  margin-top: 10px; /* Add some spacing above the message */
+  border-radius: 5px; /* Add rounded corners to the message */
+  text-align: center; /* Center-align the text */
+}

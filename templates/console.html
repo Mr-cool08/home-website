@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Console{% endblock %}
+
+{% block content %}
+    <h1>Console</h1>
+    <div class="console-container">
+        <input id="command-input" type="text" placeholder="Enter a command">
+        <button id="execute-button">Execute</button>
+        <div id="loading-spinner" style="display: none;">
+            <img src="/static/loading.gif" alt="Loading..." width="50" height="50">
+            <p>Loading...</p>
+        </div>
+        <pre id="output-area"></pre>
+    </div>
+
+    <script>
+        const commandInput = document.getElementById('command-input');
+        const executeButton = document.getElementById('execute-button');
+        const outputArea = document.getElementById('output-area');
+        const loadingSpinner = document.getElementById('loading-spinner');
+
+        executeButton.addEventListener('click', async (event) => {
+            event.preventDefault();  // Prevent default form submission
+            const command = commandInput.value;
+
+            // Hide the execute button and show the loading spinner
+            executeButton.style.display = 'none';
+            loadingSpinner.style.display = 'block';
+
+            const response = await fetch('/console', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ command }),
+            });
+        
+            const data = await response.json();
+
+            // Show the execute button again and hide the loading spinner
+            executeButton.style.display = 'inline-block'; // Use inline-block to keep it inline with the input field
+            loadingSpinner.style.display = 'none';
+
+            outputArea.textContent = data.output;
+        });
+    </script>
+{% endblock %}

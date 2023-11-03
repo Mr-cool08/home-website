@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Your page content here -->
+{% endblock %}
+
+{% block scripts %}
+<script>
+  // Set the active page based on the current URL
+  var activePage = window.location.pathname.replace('/', '');
+  var menuLinks = document.querySelectorAll('.menu-background a');
+
+  menuLinks.forEach(function(link) {
+    if (link.getAttribute('href').replace('/', '') === activePage) {
+      link.classList.add('active');
+    }
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Samba Server Temperatures{% endblock %}
+
+{% block content %}
+    <h1>Samba Server Temperatures</h1>
+    <ul id="temperature-list">
+        {% for temp in cleaned_temperatures %}
+            <li>
+                <strong>{{ temp.adapter }}</strong><br>
+                {{ temp.name }}: {{ temp.value }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
