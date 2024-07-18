@@ -10,7 +10,7 @@ import time
 import os
 import ngrok
 from flask import Flask, render_template, request, redirect, url_for
-ngrok.set_auth_token("21sKWSbbor64fr63Kph408AHzow_7cUTyW1w8aewUezDisw5Z")
+ngrok.set_auth_token("")
 websites = (
     "bigtopia.suorsa.se",
     "google.com",
