@@ -167,7 +167,7 @@ def power():
     if request.method == 'GET':
         return render_template('power.html')
     if request.method == 'POST':
-        password = "Masbo124"
+        password = ""
         if request.form.get('Shutdown') == 'Shutdown':
             print("shutdown")
             # Shutdown the system
